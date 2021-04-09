@@ -6,10 +6,11 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     mode: 'production',
-    entry: glob.sync('./assets/scripts/**.js').reduce(function(obj, el){
-        obj[path.parse(el).name] = el;
+    entry:
+      glob.sync('./assets/scripts/**.js').reduce(function(obj, el){
+        obj['' + path.parse(el).name] = el;
         return obj
-    },{}),
+      },{}),
     // when babel-loader is enabled (probably) async/await causes:
     // Uncaught ReferenceError: regeneratorRuntime is not defined
     module: {
@@ -31,8 +32,8 @@ module.exports = {
         }),
     ],
     output: {
-        filename: 'js/[name].bundle.js',
-        path: path.resolve(__dirname, 'public', 'build'),
-        publicPath: "/build/",
+        filename: '[name].js',
+        path: path.resolve(__dirname, 'public', 'dist'),
+        publicPath: "/dist",
     },
 };

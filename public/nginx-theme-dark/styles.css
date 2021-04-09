@@ -1,0 +1,25 @@
+/* styles.css
+ * Better styling for of Nginx FancyIndex page
+ * © 2015-17, Lilian Besson (Naereen) and contributors,
+ * open-sourced under the MIT License, https://lbesson.mit-license.org/
+ * hosted on GitHub, https://GitHub.com/Naereen/Nginx-Fancyindex-Theme
+ */
+@import "roboto.css";
+
+* {
+    font-family: 'Verdana', sans-serif;
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+main > .container {
+	padding: 5rem 1rem 0;
+}

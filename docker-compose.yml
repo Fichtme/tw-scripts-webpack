@@ -1,0 +1,24 @@
+version: '3.7'
+
+services:
+  tw-nginx:
+    image: tw-nginx:latest
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile
+    restart: always
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.dev-releases-backend.rule=Host(`tw-scripts.fichtme.nl`)"
+      - "traefik.http.routers.dev-releases-backend.entrypoints=websecure"
+      - "traefik.http.routers.dev-releases-backend.tls.certresolver=fichtme-resolver"
+    expose:
+      - 80
+      - 443
+    networks:
+      - traefik
+
+networks:
+  traefik:
+    external:
+      name: "traefik"
