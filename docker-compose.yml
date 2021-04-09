@@ -8,17 +8,15 @@ services:
       dockerfile: .docker/Dockerfile
     restart: always
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.dev-releases-backend.rule=Host(`tw-scripts.fichtme.nl`)"
-      - "traefik.http.routers.dev-releases-backend.entrypoints=websecure"
-      - "traefik.http.routers.dev-releases-backend.tls.certresolver=fichtme-resolver"
+      - traefik.backend=nginx
+      - traefik.frontend.rule=Host:tw-scripts.fichtme.nl
+      - traefik.docker.network=web
+      - traefik.docker.port=80
     expose:
       - 80
-      - 443
     networks:
-      - traefik
+      - web
 
 networks:
-  traefik:
-    external:
-      name: "traefik"
+  web:
+    external: true
