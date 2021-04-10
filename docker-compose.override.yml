@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  tw-nginx:
+    image: tw-nginx:latest
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile
+    restart: on-failure
+    expose:
+      - 80
+    ports:
+      - 9000:80
+    volumes:
+      - ./:/srv/
+
+networks:
+  web:
+    external: false
+
