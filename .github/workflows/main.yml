@@ -25,4 +25,4 @@ jobs:
             mkdir -p domains/tw-quicklist.fichtme.nl
             cd domains/tw-quicklist.fichtme.nl
             git pull
-            docker-compose up --build -d
+            docker-compose -f docker-compose.yml up --build -d
